@@ -1,6 +1,6 @@
+import asyncio
 import math
 import random
-import sys
 import pygame
 
 # Initialize Pygame
@@ -467,7 +467,7 @@ def new_game():
     return player, enemy, asteroids
 
 
-def main():
+async def main():
     global FOV_THRESHOLD
 
     player, enemy, asteroids = new_game()
@@ -589,10 +589,10 @@ def main():
             draw_game_over(score, won)
 
         pygame.display.flip()
+        await asyncio.sleep(0)
 
     pygame.quit()
-    sys.exit()
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
